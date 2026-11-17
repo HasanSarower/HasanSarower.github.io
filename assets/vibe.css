@@ -1,0 +1,66 @@
+/* Theme tokens cover both page surfaces and inset panels. */
+:root{--page-text:#1a1a1a;--page-muted:#55534d;--panel-text:#fff;--panel-muted:#b8b8b8;--line:rgba(0,0,0,.16);--panel-line:rgba(255,255,255,.18);--project-bg:#fff;--nav-bg:rgba(236,230,216,.94);--watermark:#d4cebe;--signal:#b7e401;--signal-ink:#161a05;--surface-soft:#e4ddcc;--network-grid:rgba(183,228,1,.1);color-scheme:light}
+:root[data-vibe="dark"]{--bg:#0c1117;--bg-2:#121a24;--bg-3:#1b2935;--card:#151f2b;--card-2:#182633;--card-3:#20303e;--border:#354654;--page-text:#edf3f7;--page-muted:#aebdca;--panel-text:#f3f8fb;--panel-muted:#b7c7d4;--line:#354654;--panel-line:#415869;--project-bg:#182633;--nav-bg:rgba(12,17,23,.95);--watermark:#263544;--signal:#71e4ce;--signal-ink:#09241f;--surface-soft:#182633;--network-grid:rgba(113,228,206,.1);--logo:#71e4ce;color-scheme:dark}
+:root[data-vibe="light"]{--bg:#fafbf8;--bg-2:#eef2e9;--bg-3:#e3e9dd;--card:#edf2e8;--card-2:#e9efdf;--card-3:#fff;--border:#d0d9c7;--page-text:#182117;--page-muted:#52604e;--panel-text:#182117;--panel-muted:#4d5c46;--line:#c7d2bf;--panel-line:#bdcbb2;--project-bg:#fff;--nav-bg:rgba(250,251,248,.96);--watermark:#dde5d5;--signal:#426818;--signal-ink:#fff;--surface-soft:#e6eddf;--network-grid:rgba(66,104,24,.12);--logo:#426818;color-scheme:light}
+:root[data-vibe="imperial"]{--bg:#161323;--bg-2:#201b30;--bg-3:#342b45;--card:#252035;--card-2:#2b243d;--card-3:#352d47;--border:#53455f;--page-text:#f8f0df;--page-muted:#c9bcae;--panel-text:#fff4df;--panel-muted:#d4c4b5;--line:#594a61;--panel-line:#695773;--project-bg:#2b243d;--nav-bg:rgba(22,19,35,.95);--watermark:#3e324d;--signal:#e3bd72;--signal-ink:#281c0e;--surface-soft:#30253d;--network-grid:rgba(227,189,114,.12);--logo:#e3bd72;color-scheme:dark}
+:root{--ink:var(--page-text);--ink-2:var(--page-text);--muted-ink:var(--page-muted);--dim-ink:var(--page-muted);--accent:var(--signal);--accent-ink:var(--signal-ink);--body:var(--panel-muted)}
+body{color:var(--page-text)}
+.nav.scrolled{background:var(--nav-bg);border-color:var(--line)}
+.nav-links,.nav-links a:hover,.mobile-menu a,.section-title,.display-h,.hc h3,.big-statement .quote,.project .meta h5,.grid-2-sq .cap h4,.edu-meta div .n{color:var(--page-text)}
+.section-sub,.edu-body p,.grid-2-sq .cap p,.edu-meta div .t,.section-title em,.project .meta .cat{color:var(--page-muted)}
+.hero-watermark{color:var(--watermark)}
+.btn-ghost-dark{color:var(--page-text);border-color:var(--line)}
+.btn-ghost-dark:hover{color:var(--page-text);border-color:var(--page-text);background:var(--surface-soft)}
+.btn-primary:hover{background:var(--signal);filter:brightness(1.08)}
+.burger{border-color:var(--line);flex-shrink:0}
+.burger span,.burger span::before,.burger span::after{background:var(--page-text)}
+.eyebrow{color:var(--page-muted);border-color:var(--line)}
+section.deep,.hero-copy h1,section.deep .section-title,section.deep .section-title em,.stat .num,.tl-card h4,.adv-card h4,.big-h,.foot b{color:var(--panel-text)}
+section.deep .section-sub,.hero-copy p.lede,.hero-copy .eyebrow,section.deep .eyebrow,.stat .lbl,.tl-card .org,.bullet-list li,.adv-card p,.pill,.contact-sub,.contact-details a,.contact-details span,.foot{color:var(--panel-muted)}
+.hero-copy .eyebrow,section.deep .eyebrow,.pill,.stats-grid,.pill-row{border-color:var(--panel-line)}
+.btn-ghost,.btn-ghost:hover{color:var(--panel-text);border-color:var(--panel-line)}
+.project{background:var(--project-bg);border-color:var(--line)}
+.project .overlay{background:linear-gradient(transparent,#101010)}
+.project .overlay h4{color:white}
+.big-h .green,.big-statement .quote b{background:none;color:var(--signal)}
+.big-statement .quote b{color:var(--logo)}
+.timeline::before{background:var(--panel-line)}
+.nav-actions{display:flex;align-items:center;gap:14px}
+.vibe-control{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--page-muted)}
+.vibe-control select{font:600 12px 'DM Sans',sans-serif;color:var(--page-text);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:9px 24px 9px 12px;cursor:pointer;max-width:115px}
+.vibe-control select:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
+/* A small interactive study, not a live payments dashboard. */
+.network-section{padding:28px 0 68px}
+.network-panel{background:var(--card);color:var(--panel-text);border:1px solid var(--panel-line);border-radius:24px;padding:34px 38px;display:grid;grid-template-columns:.8fr 1.2fr;align-items:center;gap:30px;overflow:hidden}
+.network-kicker{font-size:10px;letter-spacing:.19em;text-transform:uppercase;color:var(--panel-muted);display:flex;align-items:center;gap:9px}
+.network-kicker::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--signal)}
+.network-copy h2{font-family:'Playfair Display',serif;font-weight:500;font-size:38px;line-height:1.13;margin:16px 0}
+.network-copy p{font-size:14px;line-height:1.7;color:var(--panel-muted);max-width:35ch}
+.flow-options{display:flex;gap:6px;flex-wrap:wrap;margin-top:23px}
+.flow-options button,.motion-toggle{font:500 11px 'DM Sans',sans-serif;cursor:pointer;border:1px solid var(--panel-line);border-radius:999px;padding:8px 12px;background:transparent;color:var(--panel-text)}
+.flow-options button[aria-pressed="true"]{background:var(--signal);border-color:var(--signal);color:var(--signal-ink)}
+.network-stage{position:relative;perspective:800px;min-width:0;border-radius:16px;background:radial-gradient(ellipse at center,var(--network-grid),transparent 65%)}
+.network-plane{transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .2s ease-out;transform-style:preserve-3d;will-change:transform}
+.network-plane svg{width:100%;height:auto;display:block;overflow:visible}
+.net-grid{stroke:var(--panel-line);stroke-width:.5;opacity:.4;fill:none}
+.net-orbit{stroke:var(--signal);stroke-width:1;opacity:.25;fill:none}
+.net-route{stroke:var(--signal);stroke-width:1.2;opacity:.4;fill:none}
+.net-packet{stroke:var(--signal);stroke-width:3;fill:none;stroke-dasharray:5 95;stroke-linecap:round;animation:transfer 4s linear infinite;filter:drop-shadow(0 0 4px var(--signal))}
+.net-packet.reverse{animation-direction:reverse;animation-delay:-2s}
+.net-node{fill:var(--card);stroke:var(--panel-line)}
+.net-currency{fill:var(--panel-text);font:500 17px 'DM Sans',sans-serif;text-anchor:middle}
+.net-label{fill:var(--panel-muted);font:10px 'DM Sans',sans-serif;letter-spacing:1px;text-anchor:middle}
+.core-ring{fill:var(--card);stroke:var(--signal);stroke-width:1.3}
+.core-halo{fill:var(--signal);opacity:.07}
+.core-mark{fill:none;stroke:var(--signal);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.network-footer{display:flex;justify-content:space-between;align-items:center;gap:12px;color:var(--panel-muted);font-size:10px;letter-spacing:.04em;padding:0 6px}
+.network-footer span{max-width:32ch}
+.network-panel[data-paused="true"] .net-packet,.network-panel[data-visible="false"] .net-packet{animation-play-state:paused}
+@keyframes transfer{to{stroke-dashoffset:-100}}
+@media(max-width:1000px){.nav-links{gap:18px}.nav-actions{gap:9px}.network-panel{padding:28px;gap:15px}}
+@media(max-width:860px){.network-panel{grid-template-columns:1fr}.network-copy p{max-width:48ch}.network-copy h2{font-size:32px}.network-section{padding:15px 0 44px}.network-stage{max-width:560px;width:100%;margin:auto}.network-copy{padding:0 4px}.nav-actions{margin-left:auto;margin-right:10px}.vibe-control{gap:5px}.vibe-control select{padding:8px;max-width:100px}.logo-sig{font-size:24px}.network-plane{will-change:auto}#advisory .split{grid-template-columns:1fr!important}}
+@media(max-width:400px){.vibe-control>span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}.logo-sig{font-size:23px}.network-panel{padding:24px 18px}.network-footer{font-size:9px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.net-packet{animation:none;stroke-dasharray:3 20;opacity:.7}.network-plane{transform:none!important;transition:none}.reveal{opacity:1;transform:none;transition:none}.motion-toggle{display:none}}
+
+/* Keep the decorative contact glow inside narrow viewports. */
+.contact-glow{width:min(520px,100%)}

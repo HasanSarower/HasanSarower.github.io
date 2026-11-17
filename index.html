@@ -88,21 +88,22 @@ section.deep .section-sub{color:#9a9a9a}
 
 /* ---------- HERO ---------- */
 .hero{padding:120px 0 0}
-.hero-watermark{font-family:'Playfair Display',serif;font-weight:700;color:#d4cebe;font-size:clamp(48px,9vw,120px);text-transform:uppercase;letter-spacing:-.01em;white-space:nowrap;line-height:1;text-align:center;pointer-events:none;user-select:none;margin-bottom:-18px;position:relative;z-index:1}
-.hero-card{position:relative;background:var(--card);border-radius:28px;display:grid;grid-template-columns:1.2fr 1fr;gap:0;min-height:440px;z-index:2;overflow:hidden}
-.hero-copy{padding:60px 56px;display:flex;flex-direction:column;justify-content:center;gap:26px}
-.hero-copy .eyebrow{width:fit-content}
+.hero-watermark{font-family:'Playfair Display',serif;font-weight:700;color:#d4cebe;font-size:clamp(36px,8.5vw,108px);text-transform:uppercase;letter-spacing:-.01em;white-space:nowrap;line-height:1;text-align:center;pointer-events:none;user-select:none;margin-bottom:-18px;position:relative;z-index:1}
+.hero-card{position:relative;background:var(--card);border-radius:28px;display:grid;grid-template-columns:1.05fr .95fr;grid-template-areas:"copy photo";gap:0;min-height:440px;z-index:2;overflow:visible;margin-top:36px}
+.hero-copy{grid-area:copy;padding:48px 30px 48px 48px;display:flex;flex-direction:column;justify-content:center;gap:26px}
+.hero-copy .eyebrow{width:fit-content;color:#aaa;border-color:rgba(255,255,255,.14);background:rgba(255,255,255,.04)}
 .hero-copy h1{font-weight:400;font-size:clamp(28px,3.2vw,42px);line-height:1.22;color:#fff;letter-spacing:-.01em}
 .hero-copy h1 b{font-weight:700}
 .hero-copy p.lede{color:var(--body);font-size:15.5px;max-width:44ch;line-height:1.65}
 .hero-buttons{display:flex;gap:12px;flex-wrap:wrap}
-.hero-photo{position:relative;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;background:linear-gradient(160deg,#1c1c1c,#0c0c0c)}
-.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:top center}
-.hero-photo .ph-fallback{color:#555;font-size:13px;letter-spacing:.1em;text-transform:uppercase;padding-bottom:40px}
+ .hero-photo{grid-area:photo;position:relative;min-width:0;align-self:stretch}
+.hero-photo img{position:absolute;right:0;bottom:0;width:calc(100% + 40px);max-width:none;height:calc(100% + 100px);object-fit:contain;object-position:center bottom}
 @media (max-width:860px){
-  .hero-card{grid-template-columns:1fr}
-  .hero-photo{height:280px}
-  .hero-copy{padding:40px 28px 36px}
+  .hero-watermark{font-size:clamp(30px,8.5vw,68px)}
+  .hero-card{grid-template-columns:1fr;grid-template-areas:"photo" "copy";margin-top:70px}
+  .hero-photo{height:310px}
+  .hero-photo img{left:50%;right:auto;transform:translateX(-50%);width:100%;height:380px}
+  .hero-copy{padding:32px 28px 36px}
 }
 .hero-strip{margin-top:0}
 .hero-strip-inner{max-width:1180px;margin:0 auto;padding:40px 40px 20px;display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
@@ -222,6 +223,14 @@ section.deep .section-sub{color:#9a9a9a}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
 </style>
+<link rel="stylesheet" href="assets/vibe.css" />
+<script>
+  try {
+    const savedVibe = localStorage.getItem('portfolio-vibe');
+    if (['classic','dark','light','imperial'].includes(savedVibe)) document.documentElement.dataset.vibe = savedVibe;
+  } catch {}
+</script>
+<script src="assets/vibe.js" defer></script>
 </head>
 <body>
 
@@ -234,7 +243,12 @@ section.deep .section-sub{color:#9a9a9a}
       <a href="#advisory">Advisory</a>
       <a href="#creative">Creative</a>
     </div>
-    <a class="btn btn-ghost-dark nav-cta" href="#contact">Contact</a>
+    <div class="nav-actions">
+      <label class="vibe-control"><span>Vibe</span><select id="vibeSelect" aria-label="Vibe theme">
+        <option value="classic">Classic</option><option value="dark">Dark</option><option value="light">Light</option><option value="imperial">Imperial</option>
+      </select></label>
+      <a class="btn btn-ghost-dark nav-cta" href="#contact">Contact</a>
+    </div>
     <button class="burger" id="burger" aria-label="Open menu"><span></span></button>
   </div>
 </nav>
@@ -250,21 +264,19 @@ section.deep .section-sub{color:#9a9a9a}
 <!-- HERO -->
 <header id="top" class="hero">
   <div class="container">
-    <p class="hero-watermark reveal">FINTECH</p>
+    <p class="hero-watermark reveal">HASAN SAROWER</p>
     <div class="hero-card reveal">
       <div class="hero-copy">
         <span class="eyebrow">Senior Product Manager · Fintech &amp; AI</span>
         <h1>Building <b>fintech products</b> that move money across borders.</h1>
         <p class="lede">Currently shipping remittance, lending, and wallet products at Gozayaan — working across Data, UX, CX, and Marketing to grow adoption across Asia and the MENA region.</p>
         <div class="hero-buttons">
-          <a class="btn btn-primary btn-lg" href="#">Download Resume →</a>
+          <a class="btn btn-primary btn-lg" href="assets/documents/Hasan_Portfolio_Resume.pdf" download="Hasan_Portfolio_Resume.pdf">Download Resume →</a>
           <a class="btn btn-ghost btn-lg" href="#contact">Get in Touch</a>
         </div>
       </div>
       <div class="hero-photo">
-        <img src="me.jpg" alt="Hasan Sarower portrait"
-             onerror="this.remove()" />
-        <span class="ph-fallback">Add me.jpg →</span>
+        <img src="assets/images/hasan-sarower-cutout.png" alt="Hasan Sarower portrait" />
       </div>
     </div>
   </div>
@@ -277,6 +289,53 @@ section.deep .section-sub{color:#9a9a9a}
     </div>
   </div>
 </header>
+
+<!-- INTERACTIVE FINTECH + AI STUDY -->
+<section class="network-section" aria-labelledby="networkTitle">
+  <div class="container">
+    <div class="network-panel" id="paymentNetwork" data-paused="false" data-visible="false">
+      <div class="network-copy">
+        <div class="network-kicker">Fintech × Artificial intelligence</div>
+        <h2 id="networkTitle">Money in motion.<br>Intelligence in the loop.</h2>
+        <p id="flowDescription" aria-live="polite">Across currencies and borders, every transfer is a connected journey.</p>
+        <div class="flow-options" role="group" aria-label="Explore a product flow">
+          <button type="button" data-flow="remittance" aria-pressed="true">Remittance</button>
+          <button type="button" data-flow="lending" aria-pressed="false">Lending</button>
+          <button type="button" data-flow="wallet" aria-pressed="false">Wallet</button>
+        </div>
+      </div>
+      <div class="network-stage" id="networkStage">
+        <div class="network-plane">
+          <svg viewBox="0 0 560 300" role="img" aria-labelledby="networkSvgTitle networkSvgDesc">
+            <title id="networkSvgTitle">A connected payment network</title>
+            <desc id="networkSvgDesc">Four currency nodes connect through a central intelligence layer. Moving signals illustrate a conceptual product flow, not live transaction data.</desc>
+            <path class="net-grid" d="M35 80H525M15 150H545M35 220H525M140 35V265M280 15V285M420 35V265"/>
+            <ellipse class="net-orbit" cx="280" cy="150" rx="203" ry="100"/>
+            <g class="net-orbit" aria-hidden="true">
+              <circle cx="280" cy="150" r="112"/>
+              <ellipse cx="280" cy="150" rx="46" ry="112"/>
+              <ellipse cx="280" cy="150" rx="88" ry="112"/>
+              <ellipse cx="280" cy="150" rx="112" ry="40"/>
+              <path d="M182 96Q280 133 378 96M182 204Q280 167 378 204M168 150H392M280 38V262"/>
+            </g>
+            <path class="net-route" d="M90 90Q180 65 280 150T470 210M90 210Q185 250 280 150T470 90"/>
+            <path class="net-packet" pathLength="100" d="M90 90Q180 65 280 150T470 210"/>
+            <path class="net-packet reverse" pathLength="100" d="M90 210Q185 250 280 150T470 90"/>
+            <circle class="core-halo" cx="280" cy="150" r="66"/>
+            <circle class="core-ring" cx="280" cy="150" r="45"/>
+            <path class="core-mark" d="M265 137L280 129L295 137V155L280 163L265 155ZM265 137L280 146L295 137M280 146V163M255 146H260M300 146H305M280 119V124M280 168V173"/>
+            <text class="net-label" x="280" y="215">INTELLIGENCE LAYER</text>
+            <g transform="translate(90 90)"><rect class="net-node" x="-36" y="-25" width="72" height="50" rx="14"/><text class="net-currency" y="6" data-node="0">MYR</text><text class="net-label" y="44" data-step="0">SEND</text></g>
+            <g transform="translate(470 90)"><rect class="net-node" x="-36" y="-25" width="72" height="50" rx="14"/><text class="net-currency" y="6" data-node="1">USD</text><text class="net-label" y="44" data-step="1">ROUTE</text></g>
+            <g transform="translate(90 210)"><rect class="net-node" x="-36" y="-25" width="72" height="50" rx="14"/><text class="net-currency" y="6" data-node="2">AED</text><text class="net-label" y="44" data-step="2">CONNECT</text></g>
+            <g transform="translate(470 210)"><rect class="net-node" x="-36" y="-25" width="72" height="50" rx="14"/><text class="net-currency" y="6" data-node="3">BDT</text><text class="net-label" y="44" data-step="3">RECEIVE</text></g>
+          </svg>
+        </div>
+        <div class="network-footer"><span>Interactive concept · Move your pointer to explore</span><button type="button" class="motion-toggle" id="motionToggle" aria-pressed="false">Pause motion</button></div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- TRACK RECORD -->
 <section class="deep">
@@ -390,7 +449,7 @@ section.deep .section-sub{color:#9a9a9a}
 <section class="alt">
   <div class="container">
     <div class="split">
-      <div class="img-ph reveal" data-label="AIUB · 2015–2018"><div class="stripes"></div></div>
+      <div class="img-ph reveal" style="aspect-ratio:3/4"><img src="assets/images/hasan-sarower-graduation.png" alt="Hasan Sarower tossing his graduation cap at AIUB" loading="lazy" style="width:100%;height:100%;object-fit:contain" /></div>
       <div class="reveal">
         <p class="sec-label">the foundation</p>
         <h2 class="display-h">Where computer science met <em>healthcare.</em></h2>
@@ -453,11 +512,11 @@ section.deep .section-sub{color:#9a9a9a}
     <h2 class="section-title reveal">Not everything is <em>backlogs and dashboards.</em></h2>
     <div class="grid-2-sq">
       <div class="reveal">
-        <div class="img-ph" data-label="Photography &amp; Film"><div class="stripes"></div></div>
+        <div class="img-ph"><img src="assets/images/deep-into-the-blue-of-dhaka-city.jpg" alt="Deep into the Blue of Dhaka City — a reflection of a rickshaw, trees, and blue sky in water" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain" /></div>
         <div class="cap"><h4>Photography &amp; Film</h4><p>Award-recognized for storytelling through the lens — on set, behind the camera, and in the edit.</p></div>
       </div>
       <div class="reveal">
-        <div class="img-ph" data-label="Painting"><div class="stripes"></div></div>
+        <div class="img-ph"><img src="assets/images/hasan-sarower-painting.jpg" alt="Abstract painting in orange, green, and charcoal tones by Hasan Sarower" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain" /></div>
         <div class="cap"><h4>Painting</h4><p>Award-recognized visual artist — painting is where the pixels stop and the canvas takes over.</p></div>
       </div>
     </div>
@@ -470,20 +529,19 @@ section.deep .section-sub{color:#9a9a9a}
   <div class="container">
     <div class="contact-grid">
       <div class="contact-portrait reveal">
-        <img src="me.jpg" alt="Hasan Sarower" onerror="this.remove()" />
-        <span class="ph-fallback">Add me.jpg →</span>
+        <img src="assets/images/hasan-sarower-contact.jpg" alt="Hasan Sarower standing beside a car" loading="lazy" style="object-position:center top" />
       </div>
       <div class="reveal" style="text-align:left">
         <p class="eyebrow">Let's Connect</p>
-        <h2 class="big-h" style="margin-top:18px">Got a fintech product worth <span class="green">building</span>? Let's talk.</h2>
-        <p class="contact-sub">Whether it's product strategy, growth, or AI in fintech — I'm one conversation away.</p>
+        <h2 class="big-h" style="margin-top:18px">Got a product worth <span class="green">building</span>? Let's talk.</h2>
+        <p class="contact-sub">Whether it's product strategy, growth, or AI — I'm one conversation away.</p>
         <div class="contact-details">
           <a href="mailto:hasansarower777@gmail.com">hasansarower777@gmail.com</a>
           <span>+880 1757 049684 · Dhaka, BD</span>
         </div>
         <div class="contact-buttons">
-          <a class="btn btn-primary btn-lg" href="mailto:hasansarower777@gmail.com">Send a Message →</a>
-          <a class="btn btn-ghost btn-lg" href="#">LinkedIn ↗</a>
+          <a class="btn btn-primary btn-lg" href="https://wa.me/8801757049684" target="_blank" rel="noopener noreferrer" aria-label="Chat with Hasan on WhatsApp at +880 1757 049684">Chat on WhatsApp ↗</a>
+          <a class="btn btn-ghost btn-lg" href="https://www.linkedin.com/in/hasan-sarower/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
         </div>
       </div>
     </div>
