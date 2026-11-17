@@ -1,12 +1,4 @@
 (() => {
-  const select = document.getElementById('vibeSelect');
-  const themes = ['classic', 'dark', 'light', 'imperial'];
-  select.value = themes.includes(document.documentElement.dataset.vibe) ? document.documentElement.dataset.vibe : 'classic';
-  select.addEventListener('change', () => {
-    const value = themes.includes(select.value) ? select.value : 'classic';
-    document.documentElement.dataset.vibe = value;
-    try { localStorage.setItem('portfolio-vibe', value); } catch { /* Theme remains usable when storage is blocked. */ }
-  });
   const panel = document.getElementById('paymentNetwork');
   const stage = document.getElementById('networkStage');
   const plane = stage.querySelector('.network-plane');

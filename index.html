@@ -224,12 +224,6 @@ section.deep .section-sub{color:#9a9a9a}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
 </style>
 <link rel="stylesheet" href="assets/vibe.css" />
-<script>
-  try {
-    const savedVibe = localStorage.getItem('portfolio-vibe');
-    if (['classic','dark','light','imperial'].includes(savedVibe)) document.documentElement.dataset.vibe = savedVibe;
-  } catch {}
-</script>
 <script src="assets/vibe.js" defer></script>
 </head>
 <body>
@@ -244,9 +238,6 @@ section.deep .section-sub{color:#9a9a9a}
       <a href="#creative">Creative</a>
     </div>
     <div class="nav-actions">
-      <label class="vibe-control"><span>Vibe</span><select id="vibeSelect" aria-label="Vibe theme">
-        <option value="classic">Classic</option><option value="dark">Dark</option><option value="light">Light</option><option value="imperial">Imperial</option>
-      </select></label>
       <a class="btn btn-ghost-dark nav-cta" href="#contact">Contact</a>
     </div>
     <button class="burger" id="burger" aria-label="Open menu"><span></span></button>
